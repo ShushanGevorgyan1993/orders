@@ -3,18 +3,22 @@ package am.order.models;
 public class Customer {
     private String firstName;
     private String lastName;
-    private int telephoneNumber;
+    private String email;
+    private String phone;
     private String address;
 
-    //public Customer() {}
 
-    public Customer(String firstName, String lastName, int telephoneNumber, String address) {
+    public Customer(String firstName,
+                    String lastName,
+                    String email,
+                    String phone,
+                    String address) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.telephoneNumber = telephoneNumber;
+        this.email = email;
+        this.phone = phone;
         this.address = address;
     }
-
     public String getFirstName() {
         return firstName;
     }
@@ -31,12 +35,20 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public int getTelephoneNumber() {
-        return telephoneNumber;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTelephoneNumber(int telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getAddress() {
@@ -45,5 +57,11 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void printSummary() {
+        System.out.println("Customer: " + firstName + " "
+                + lastName + " " + email + " "
+                + phone + " " + address);
     }
 }
