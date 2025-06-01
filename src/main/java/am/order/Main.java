@@ -54,6 +54,8 @@ public class Main {
         System.out.println("Total orders " + totalOrders);
         System.out.println("Total Express orders " + expressOrdecCount);
         System.out.println("Total International orders " + interOrderCount);
+        System.out.println("Total International orders " + interOrderCount);
+
 
 
     }
