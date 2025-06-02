@@ -1,8 +1,9 @@
 package am.order.models;
 
-public class Order {
+public  class Order {
     protected Customer customer;
     protected double price;
+
     public Order(Customer customer) {
         this.customer = customer;
         this.price = 0;
