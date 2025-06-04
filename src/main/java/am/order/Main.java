@@ -1,60 +1,73 @@
 package am.order;
 
-import am.order.models.Customer;
-import am.order.models.ExpressOrder;
-import am.order.models.InternationalOrder;
-import am.order.models.Order;
+import am.order.models.*;
+
+import java.util.ArrayList;
+import am.order.models.Exceptions.CountryNotSupportedException;
 
 public class Main {
     public static void main(String[] args) {
 
-        Customer customer = new Customer("John",
-                "Smith",
-                "john@gmail.com",
-                "+37477777777",
-                "5 Azatutyun, Yerevan, Armenia");
 
-        Customer customer1 = new Customer("Ani",
-                "Sargsyan",
-                "anisargsyan@gmail.com",
-                "+374577564389",
-                "16 Halabyan, Yerevan, Armenia");
+        Address address = new Address("United Kingdom", "London", "Oxford Street", "134");
 
-        Customer customer2 = new Customer("Aram",
-                "Gevorgyan",
-                "aramgevorgyan@gmail.com",
-                "+37493030303",
-                "15 Papazyan, Yerevan, Armenia");
+        Address address1 = new Address("Armenia", "Yerevan", "Komitas 26", "12");
+
+        Address address2 = new Address("Armenia", "Gyumri", "Shahumyan", "26");
+
+        Address address3 = new Address("China", "Pekin", "Pekin", "554");
 
 
-        Order order1 = new ExpressOrder(customer, 1500);
-        Order order2 = new InternationalOrder(customer1, 1200);
-        Order order3 = new ExpressOrder(customer2, 2000);
+        Customer customer = new Customer("John", "Smith", "john@gmail.com", "+37477777777", address);
 
-        Order[] orders = new Order[]{order1, order2, order3};
+        Customer customer1 = new Customer("Ani", "Sargsyan", "anisargsyan@gmail.com", "+374577564389", address1);
 
+        Customer customer2 = new Customer("Aram", "Gevorgyan", "aramgevorgyan@gmail.com", "+37493030303", address2);
+
+        Customer customer3 = new Customer("Li", "Zhang", "Zhang@gmail.com", "2922365364", address3);
+
+
+        ArrayList<Order> orders = new ArrayList<>();
+
+        // Create orders with exception handling
+        createOrder(orders, customer, 1500);
+        createOrder(orders, customer1, 1200);
+        createOrder(orders, customer2, 2000);
+        createOrder(orders, customer3, 5000);
+
+        System.out.println(ExpressOrder.getVendor());
+
+        // Print summaries
         for (Order order : orders) {
             order.getCustomer().printSummary();
             order.printSummery();
+            order.getCustomer().getAddress().printFullAddress();
+            System.out.println("-------------------");
         }
 
-        int totalOrders = orders.length;
-        int expressOrdecCount = 0;
-        int interOrderCount = 0;
+        // Count orders
+        int expressOrderCount = 0;
+        int internationalOrderCount = 0;
 
         for (Order order : orders) {
             if (order instanceof ExpressOrder) {
-                expressOrdecCount++;
-                break;
+                expressOrderCount++;
             } else if (order instanceof InternationalOrder) {
-                interOrderCount++;
+                internationalOrderCount++;
             }
         }
 
-        System.out.println("Total orders " + totalOrders);
-        System.out.println("Total Express orders " + expressOrdecCount);
-        System.out.println("Total International orders " + interOrderCount);
+        System.out.println("Total orders: " + orders.size());
+        System.out.println("Total Express orders: " + expressOrderCount);
+        System.out.println("Total International orders: " + internationalOrderCount);
+    }
 
-
+    private static void createOrder(ArrayList<Order> orders, Customer customer, double price) {
+        try {
+            Order order = Order.createOrder(customer, price);
+            orders.add(order);
+        } catch (CountryNotSupportedException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

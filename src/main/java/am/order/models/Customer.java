@@ -5,20 +5,21 @@ public class Customer {
     private String lastName;
     private String email;
     private String phone;
-    private String address;
+    private Address address;
 
 
     public Customer(String firstName,
                     String lastName,
                     String email,
                     String phone,
-                    String address) {
+                    Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.address = address;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -51,17 +52,19 @@ public class Customer {
         this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public void printSummary() {
         System.out.println("Customer: " + firstName + " "
                 + lastName + " " + email + " "
-                + phone + " " + address);
+                + phone);
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
+
+
