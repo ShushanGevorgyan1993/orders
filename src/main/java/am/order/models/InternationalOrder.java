@@ -8,12 +8,13 @@ public class InternationalOrder extends Order implements Deliverable {
 
 
     public InternationalOrder(Customer customer, double price) {
-            super(customer, price);
-            String country = customer.getAddress().getCountry();
-            if (country.equals("Georgia") || country.equals("China")) {
-                throw new CountryNotSupportedException("Unfortunately, we can't ship to your country.");
-            }
+        super(customer, price);
+
+        String country = customer.getAddress().getCountry();
+        if (country.equalsIgnoreCase("Georgia") || country.equalsIgnoreCase("China")) {
+            throw new CountryNotSupportedException("Unfortunately, we can't ship to " + country + ".");
         }
+    }
 
         @Override
         public void printSummery() {

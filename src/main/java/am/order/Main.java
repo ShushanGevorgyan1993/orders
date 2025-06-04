@@ -1,6 +1,8 @@
 package am.order;
 
 import am.order.models.*;
+
+import java.util.ArrayList;
 import am.order.models.Exceptions.CountryNotSupportedException;
 
 public class Main {
@@ -25,31 +27,17 @@ public class Main {
         Customer customer3 = new Customer("Li", "Zhang", "Zhang@gmail.com", "2922365364", address3);
 
 
-        Order order3 = null;
-        Order  order4 = null;
+        ArrayList<Order> orders = new ArrayList<>();
 
-        Order order1 = new ExpressOrder(customer, 1500);
-        Order order2 = new ExpressOrder(customer1, 2000);
-
-
-        try {
-            order3 = new InternationalOrder(customer2, 3400);
-        } catch (CountryNotSupportedException e) {
-            System.out.println("Error creating order3: " + e.getMessage());
-        }
-
-        try {
-            order4 = new InternationalOrder(customer3, 5000);
-        } catch (CountryNotSupportedException e) {
-            System.out.println("Error creating order4: " + e.getMessage());
-        }
-
+        // Create orders with exception handling
+        createOrder(orders, customer, 1500);
+        createOrder(orders, customer1, 1200);
+        createOrder(orders, customer2, 2000);
+        createOrder(orders, customer3, 5000);
 
         System.out.println(ExpressOrder.getVendor());
 
-
-        Order[] orders = new Order[]{order1, order2, order3, order4};
-
+        // Print summaries
         for (Order order : orders) {
             order.getCustomer().printSummary();
             order.printSummery();
@@ -57,22 +45,29 @@ public class Main {
             System.out.println("-------------------");
         }
 
-        int totalOrders = orders.length;
-        int expressOrdercCount = 0;
-        int interOrderCount = 0;
+        // Count orders
+        int expressOrderCount = 0;
+        int internationalOrderCount = 0;
 
         for (Order order : orders) {
             if (order instanceof ExpressOrder) {
-                expressOrdercCount++;
-                break;
+                expressOrderCount++;
             } else if (order instanceof InternationalOrder) {
-                interOrderCount++;
+                internationalOrderCount++;
             }
         }
 
-        System.out.println("Total orders " + totalOrders);
-        System.out.println("Total Express orders " + expressOrdercCount);
-        System.out.println("Total International orders " + interOrderCount);
+        System.out.println("Total orders: " + orders.size());
+        System.out.println("Total Express orders: " + expressOrderCount);
+        System.out.println("Total International orders: " + internationalOrderCount);
+    }
+
+    private static void createOrder(ArrayList<Order> orders, Customer customer, double price) {
+        try {
+            Order order = Order.createOrder(customer, price);
+            orders.add(order);
+        } catch (CountryNotSupportedException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
-
