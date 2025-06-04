@@ -20,6 +20,17 @@ public class Customer {
         this.address = address;
     }
 
+    public void printSummary() {
+        System.out.println("Customer: " + firstName + " "
+                + lastName + " " + email + " "
+                + phone);
+    }
+
+    public String toString(){
+        return ("✅" + firstName + " " + lastName + " " + phone);
+    }
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -50,12 +61,6 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public void printSummary() {
-        System.out.println("Customer: " + firstName + " "
-                + lastName + " " + email + " "
-                + phone);
     }
 
     public Address getAddress() {

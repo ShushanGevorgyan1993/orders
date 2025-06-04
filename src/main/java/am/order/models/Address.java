@@ -1,6 +1,6 @@
 package am.order.models;
 
-public class Address {
+public class Address implements Comparable<Address> {
     private String country;
     private String city;
     private String street;
@@ -14,11 +14,19 @@ public class Address {
         this.apartment = apartment;
     }
 
+    @Override
+    public String toString() {
+        return country + " " + city;
+    }
+
+    @Override
+    public int compareTo(Address o) {
+        return this.getCity().compareTo(o.getCity());
+    }
+
     public void printFullAddress() {
         System.out.println("The address is: " + country + ", " + city + ", " + street + ", " + apartment);
     }
-
-
 
     public String getCountry() {
         return country;
@@ -51,5 +59,4 @@ public class Address {
     public void setApartment(String apartment) {
         this.apartment = apartment;
     }
-
 }
