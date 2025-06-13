@@ -1,7 +1,6 @@
 package am.order.homeworkForMap;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class PhoneBook {
 
@@ -23,10 +22,6 @@ public class PhoneBook {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Contact: " + contact;
-    }
 }
 
 

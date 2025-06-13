@@ -1,23 +1,49 @@
 package am.order.homeworkForMap;
 
+import java.util.Scanner;
+
 public class Task2 {
     public static void main(String[] args) {
 
-        PhoneBook person = new PhoneBook();
+        PhoneBook contact = new PhoneBook();
 
-        person.addContact("Anahit", "098653827");
-        person.addContact("Vahe", "098235643");
-        person.addContact("Mari", "0964523422");
-        person.addContact("Anahit", "0987337644");
-        person.addContact("Mher", "077356432");
+        System.out.println(contact);
 
-        System.out.println(person);
+        boolean isAlive = true;
 
-        person.deleteContact("Mari");
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println(person);
+        while (isAlive) {
+            System.out.println("Type 1 for add contact");
+            System.out.println("Type 2 for delete contact");
+            System.out.println("Type 3 for search contact");
+            System.out.println("Type any other for for exit");
 
-
-
+            switch (scanner.next()) {
+                case "1":
+                    System.out.println("Type name");
+                    String name = scanner.next();
+                    System.out.println("Type number");
+                    String number = scanner.next();
+                    contact.addContact(name, number);
+                    System.out.println("contact added");
+                    break;
+                case "2":
+                    System.out.println("Type name for delete");
+                    contact.deleteContact(scanner.next());
+                    break;
+                case "3":
+                    System.out.println("Type name for search");
+                    contact.searchContact(scanner.next());
+                    break;
+                default:
+                    isAlive = false;
+                    System.out.println("goodbye");
+                    break;
+            }
+        }
     }
+
+
 }
+
