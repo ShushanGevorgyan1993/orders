@@ -18,4 +18,3 @@ public enum DaysOfWeek {
         System.out.println("Today is " + x);
     }
 }
-
