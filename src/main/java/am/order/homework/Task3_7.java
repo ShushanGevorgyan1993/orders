@@ -30,7 +30,7 @@ public class Task3_7 {
 
         boolean isFound = false;
         for (Customer customer : customers) {
-            if (customer.getName().charAt(0) == ('K')) {
+            if (customer.getName().startsWith("K")) {
                 System.out.println("The name is " + customer.getName());
                 isFound = true;
             }
