@@ -18,10 +18,8 @@ public class Main {
         System.out.println("------------------------------------");
 
         //Task 3: Task: Print the average temperature for each season.
-        Season.SPRING.getAverageTemperature();
-        Season.SUMMER.getAverageTemperature();
-        Season.AUTUMN.getAverageTemperature();
-        Season.WINTER.getAverageTemperature();
+
+        System.out.println("The average temperature for summer is " + Season.SUMMER.getAverageTemperature());
         System.out.println("------------------------------------");
 
     }

@@ -12,8 +12,8 @@ public enum Season {
         this.averageTemperature = averageTemperature;
     }
 
-    public void getAverageTemperature() {
-        System.out.println("The average temperature for " + this.name() + " is " + averageTemperature);
+    public int getAverageTemperature() {
+        return averageTemperature;
     }
 
 }
