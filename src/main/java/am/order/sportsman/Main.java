@@ -13,9 +13,9 @@ public class Main {
                 System.out.println("What is your sport name? ");
                 String sportName = scanner.nextLine();
                 System.out.println("Are you playing single or with your team?");
-                String infoAboutSport = scanner.nextLine();
+                String teamPlayerOrSinglePlayer = scanner.nextLine();
 
-                SportCategory category = SportCategory.valueOf(infoAboutSport.toUpperCase());
+                SportCategory category = SportCategory.valueOf(teamPlayerOrSinglePlayer.toUpperCase());
                 System.out.println("I'm playing " + sportName.toLowerCase() + category.getInfo());
             }
         };
@@ -28,9 +28,9 @@ public class Main {
                 System.out.println("What is your sport name? ");
                 String sportName = scanner.nextLine();
                 System.out.println("Are you playing single or with your team? ");
-                String infoAboutSport = scanner.nextLine();
+                String teamPlayerOrSinglePlayer = scanner.nextLine();
 
-                SportCategory category = SportCategory.valueOf(infoAboutSport.toUpperCase());
+                SportCategory category = SportCategory.valueOf(teamPlayerOrSinglePlayer.toUpperCase());
                 System.out.println("I'm playing " + sportName.toLowerCase() + category.getInfo());
 
             }
@@ -44,9 +44,9 @@ public class Main {
                 System.out.println("What is your sport name? ");
                 String sportName = scanner.nextLine();
                 System.out.println("Are you playing single or with your team? ");
-                String infoAboutSport = scanner.nextLine();
+                String teamPlayerOrSinglePlayer = scanner.nextLine();
 
-                SportCategory category = SportCategory.valueOf(infoAboutSport.toUpperCase());
+                SportCategory category = SportCategory.valueOf(teamPlayerOrSinglePlayer.toUpperCase());
                 System.out.println("I'm playing " + sportName.toLowerCase() + category.getInfo());
                 scanner.close();
             }
